@@ -1,0 +1,60 @@
+{
+    "IrUiView": {
+        "prefix": ["ir.ui.view"],
+        "body": ["<record model=\"ir.ui.view\" id=\"${1:element}\">",
+                "    <field name=\"model\">${2:element}</field>",
+                "    <field name=\"type\">${3|form,tree|}</field>",
+                "    <field name=\"name\">${1:element}</field>",
+            "</record>"
+                ],
+        "description": "ir.ui.view"
+    },
+    "IrActionActWin": {
+        "prefix": ["ir.action.act_window"],
+        "body": ["<record model=\"ir.action.act_window\" id=\"${1:element}\">",
+                "    <field name=\"name\">${2:element}</field>",
+                "    <field name=\"res_model\">${3:element}</field>",
+                "    <field name=\"domain\" eval=\"\" pyson=\"1\"/>",
+            "</record>",
+            "<record model=\"ir.action.act_window.view\" id=\"${1:element}_tree_view\">",
+                "    <field name=\"sequence\" eval=\"10\"/>",
+                "    <field name=\"view\" ref=\"${4:element}\"/>",
+                "    <field name=\"act_window\" ref=\"${1:element}\"/>",
+            "</record>",
+            "<record model=\"ir.action.act_window.view\" id=\"${1:element}_form_view\">",
+                "    <field name=\"sequence\" eval=\"20\"/>",
+                "    <field name=\"view\" ref=\"${5:element}\"/>",
+                "    <field name=\"act_window\" ref=\"${1:element}\"/>",
+            "</record>"
+        ],
+        "description": "ir.action.act_window"
+    },
+    <!-- "IrActionActWinView": {
+        "prefix": ["ir.action.act_window.view"],
+        "body": ["<record model=\"ir.action.act_window.view\" id=\"${1:element}_tree_view\">",
+                "    <field name=\"sequence\" eval=\"10\"/>",
+                "    <field name=\"view\" ref=\"${2:element}\"/>",
+                "    <field name=\"act_window\" ref=\"${3:element}\"/>",
+            "</record>",
+            "<record model=\"ir.action.act_window.view\" id=\"${1:element}_form_view\">",
+                "    <field name=\"sequence\" eval=\"20\"/>",
+                "    <field name=\"view\" ref=\"${2:element}\"/>",
+                "    <field name=\"act_window\" ref=\"${3:element}\"/>",
+            "</record>"
+        ],
+        "description": "ir.action.act_window.view"
+    }, -->
+    "MenuItem": {
+        "prefix": ["menuitem"],
+        "body": [
+            "<menuitem",
+            "    parent=\"${1:element}\"", 
+            "    sequence=\"${2:element}\"",
+            "    action=\"${3:element}\"",
+            "    name=\"${4:element}\"",
+            "    id=\"${5:element}\"/>"
+        ],
+        "description": "ir.action.act_window.view"
+    },
+
+}

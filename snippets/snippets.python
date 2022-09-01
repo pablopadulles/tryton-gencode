@@ -1,0 +1,14 @@
+{	
+    "class trytonBasic": {
+        "prefix": ["class"],
+        "body": ["${1:element}(ModelSQL, ModelView):",
+                "    \"${1:element}\"",
+                "    __name__ = ${2:element}"],
+        "description": "ModelSQL, ModelView"
+    },
+    "class trytonSingleton": {
+        "prefix": ["class"],
+        "body": "${1:element}(ModelSingleton, ModelSQL, ModelView): \n \"${1:element}\" \n __name__ = ${2:element} ",
+        "description": "ModelSingleton, ModelSQL, ModelView"
+    }
+}
