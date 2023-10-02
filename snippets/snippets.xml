@@ -29,21 +29,6 @@
         ],
         "description": "ir.action.act_window"
     },
-    <!-- "IrActionActWinView": {
-        "prefix": ["ir.action.act_window.view"],
-        "body": ["<record model=\"ir.action.act_window.view\" id=\"${1:element}_tree_view\">",
-                "    <field name=\"sequence\" eval=\"10\"/>",
-                "    <field name=\"view\" ref=\"${2:element}\"/>",
-                "    <field name=\"act_window\" ref=\"${3:element}\"/>",
-            "</record>",
-            "<record model=\"ir.action.act_window.view\" id=\"${1:element}_form_view\">",
-                "    <field name=\"sequence\" eval=\"20\"/>",
-                "    <field name=\"view\" ref=\"${2:element}\"/>",
-                "    <field name=\"act_window\" ref=\"${3:element}\"/>",
-            "</record>"
-        ],
-        "description": "ir.action.act_window.view"
-    }, -->
     "MenuItem": {
         "prefix": ["menuitem"],
         "body": [
@@ -52,9 +37,41 @@
             "    sequence=\"${2:element}\"",
             "    action=\"${3:element}\"",
             "    name=\"${4:element}\"",
-            "    id=\"${5:element}\"/>"
+            "    id=\"${5:element}\"/>",
+            "<record model="ir.ui.menu-res.group" id="${5:element}_group_admin">",
+                "<field name="menu" ref="${5:element}"/>",
+                "<field name="group" ref="res.group_admin"/>",
+            "</record>"
         ],
         "description": "ir.action.act_window.view"
+    },
+    "IrActionDomain": {
+        "prefix": ["domain"],
+        "body": [
+            "<record model=\"ir.action.act_window.domain\"",
+            "    id=\"${1:element}\">",
+            "    <field name=\"name\">${2:element}</field>",
+            "    <field name=\"sequence\" eval=\"10\"/>",
+            "    <field name=\"domain\"",
+            "        eval=\"${3:pyson}\" pyson=\"1\"/>",
+            "    <field name=\"act_window\" ref=\"${4:element}\"/>",
+            "</record>"
+        ],
+        "description": "ir.action.act_window.domain"
+    },
+    "ResGroup": {
+        "prefix": ["group"],
+        "body": [
+                "<record model=\"res.group\" id=\"group_${1:element}_admin\">",
+                "    <field name="name">${2:element}</field>",
+                "</record>",
+                "<record model=\"res.user-res.group\"",
+                "    id=\"user_${1:element}_group_admin\">",
+                "    <field name=\"user\" ref=\"res.user_admin\"/>",
+                "    <field name=\"group\" ref=\"group_${1:element}_admin\"/>",
+                "</record>"
+        ],
+        "description": "res.group admin predefinido"
     },
 
 }
